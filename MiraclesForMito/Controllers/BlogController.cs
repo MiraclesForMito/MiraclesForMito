@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MiraclesForMito.Models;
 using Newtonsoft.Json;
+using System.Xml;
 
 namespace MiraclesForMito.Controllers
 {
@@ -77,5 +78,6 @@ namespace MiraclesForMito.Controllers
 				new BlogPaginationModel(db, filterType, filterValue, model.PageIndex, model.PageSize)
 			);
 		}
+
     }
 }
