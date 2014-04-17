@@ -208,7 +208,7 @@ namespace MiraclesForMito.Controllers
 				return PartialView(new List<BlogPost> { });
 			}
 
-			var adapter = new XmlToBlogPostsAdapter(xmlBlogsFile.InputStream);
+			var adapter = new BMLToBlogPostAdapter(xmlBlogsFile.InputStream);
 			var createdPosts = adapter.BlogPosts;
 
 			db.BlogPosts.AddRange(createdPosts);

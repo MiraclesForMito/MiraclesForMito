@@ -15,6 +15,7 @@
 				@using (@Html.BeginForm("Upload", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", Class = "form-horizontal", role = "form" }))
 				{ 
 					<label for="xmlBlogsFile">XML File</label>
+					<span	> Should be less than 10MB </span> <!--TODO: Enforce -->
 					<input type="file" name="xmlBlogsFile" id="xmlBlogsFile"/>
 					<button type="submit">Submit</button>
 				}
