@@ -539,6 +539,7 @@
     <Content Include="Views\Events\EventsPaginationBody.cshtml" />
     <Content Include="Views\Events\EventDisplayAllPartial.cshtml" />
     <Content Include="Views\Events\EventsPaginationPartial.cshtml" />
+    <Content Include="Views\Blog\Adapt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using MiraclesForMito.Models;
 using Newtonsoft.Json;
+using System.Xml.Linq;
+using System.Net.Http;
+using System.Net;
 
 namespace MiraclesForMito.Controllers
 {
@@ -77,5 +80,44 @@ namespace MiraclesForMito.Controllers
 				new BlogPaginationModel(db, filterType, filterValue, model.PageIndex, model.PageSize)
 			);
 		}
+
+		public ViewResult Adapt(HttpPostedFileBase blogXmlFile)
+		{
+			IEnumerable<BlogPost> blogs = new List<BlogPost>();
+
+			if (blogXmlFile == null || blogXmlFile.ContentLength == 0)
+			{
+				//return Request.CreateResponse(HttpStatusCode.BadRequest, new BlogPost());
+			}
+			else
+			{
+				XDocument blogsLinq = XDocument.Load(blogXmlFile.InputStream);
+
+				var authorsRef = blogsLinq.Descendants("authors").Select(x => new
+				{
+					Id = x.Attribute("id").Value,
+					Email = x.Attribute("email").Value,
+					Title = x.Element("title").Value //Source XML uses CDATA node here
+				}).ToDictionary(a => a.Id, a => a);
+
+
+				var categoriesRef = blogsLinq.Descendants("categories");
+
+				var posts = blogsLinq.Descendants("posts").Elements("post");
+
+				blogs = posts.Select(x =>
+					new BlogPost
+					{
+						Title = x.Element("Title").Value,
+						Content = x.Element("Content").Value
+					}
+				);
+
+			}
+
+			return View( "~/Views/Blog/Adapt.cshtml", blogs);
+			//return Request.CreateResponse(HttpStatusCode.OK, blogs);
+		} 
+
     }
 }
