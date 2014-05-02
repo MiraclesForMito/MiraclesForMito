@@ -22,11 +22,19 @@
 				<em>No Author</em>
 			}
 		</small>
+		
+		@if(null!=Model.LinkedEvent)
+		{
+			<small class="event">
+				for event  @Html.ActionLink(Model.LinkedEvent.Name ?? "Unknown Event", "Details", "Events", new{  id= Model.LinkedEvent.ID })
+			</small>
+		}
 
 	</h3>
 
 	<div class="post-content">
 		@Html.Raw(Model.Content)
 	</div>
+
 
 </div>
