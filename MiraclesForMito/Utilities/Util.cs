@@ -5,6 +5,7 @@ using System.Web;
 using MiraclesForMito.Models;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Web.WebPages.Html;
 
 namespace MiraclesForMito.Utilities
 {
@@ -27,14 +28,15 @@ namespace MiraclesForMito.Utilities
 		/// <returns>The same string in sentence case</returns>
 		public static string CamelCaseToSentenceCase(string camelCase)
 		{
-			Regex camelBoundExpression= new Regex("(a-b)(A-B)");
+			Regex camelBoundExpression = new Regex("([a-z])([A-Z])");
 
 			MatchEvaluator spacesBetweenCamelBounds = delegate(Match m){
-				return m.Groups[1].Value + " " + m.Groups[1].Value.ToLower();
+				return m.Groups[1].Value + " " + m.Groups[2].Value.ToLower();
 			};
 
 			return camelBoundExpression.Replace(camelCase, spacesBetweenCamelBounds);
 		}
+
 	}
 
 	public class UserUtils

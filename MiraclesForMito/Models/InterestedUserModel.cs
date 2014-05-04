@@ -34,7 +34,7 @@ namespace MiraclesForMito.Models
 		/// <summary>
 		/// Is required and must be a valid phone
 		/// </summary>
-		[Display(Name = "Phone Number", GroupName = "Contact", ShortName="Phone", Description="Phone", Order=4)]
+		[Display(Name = "Phone Number", GroupName = "Contact", ShortName="Phone",  Order=4)]
 		[DataType(DataType.PhoneNumber)]
 		public string PhoneNumber { get; set; }
 
@@ -42,7 +42,8 @@ namespace MiraclesForMito.Models
 		/// What person wants specifically
 		/// </summary>
 		[Required]
-		[UIHint("DropdownCamelCase")]
+		[UIHint("DropdownCamelToSentence")]
+		[Display(Name = "I'm interested in", GroupName = "Interest", ShortName = "Interest",  Order = 5)]
 		public InterestedIn InterestedIn { get; set; }
 
 	}
