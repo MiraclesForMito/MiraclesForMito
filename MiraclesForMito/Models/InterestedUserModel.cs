@@ -42,7 +42,6 @@ namespace MiraclesForMito.Models
 		/// What person wants specifically
 		/// </summary>
 		[Required]
-		[UIHint("DropdownCamelToSentence")]
 		[Display(Name = "I'm interested in", GroupName = "Interest", ShortName = "Interest",  Order = 5)]
 		public InterestedIn InterestedIn { get; set; }
 
