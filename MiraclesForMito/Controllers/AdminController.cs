@@ -184,6 +184,47 @@ namespace MiraclesForMito.Controllers
 		{
 			return View(db.BlogPosts.Find(id));
 		}
+		[AdminsOnly]
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult BlogPostsUpload()
+		{
+			return View();
+		}
+
+		/// <summary>
+		/// Creates BlogPosts and saves to DB.
+		/// </summary>
+		/// <param name="xmlBlogsFile">The type="file" uploaded from a form[enctype="multipart/form-data"]</param>
+		/// <returns></returns>
+		[AdminsOnly]
+		public ActionResult Upload(HttpPostedFileBase xmlBlogsFile)
+		{
+			if (xmlBlogsFile == null || xmlBlogsFile.ContentLength == 0)
+			{
+				//ModelValidation.AddError() 
+				return PartialView(new List<BlogPost> { });
+			}
+
+			var adapter = new BMLToBlogPostAdapter(xmlBlogsFile.InputStream);
+			var createdPosts = adapter.BlogPosts;
+
+			db.BlogPosts.AddRange(createdPosts);
+			db.SaveChanges();
+
+			// if the post is saved and the post has published set to true we need to send emails
+			if (createdPosts != null && createdPosts.Count()>0)
+			{
+				foreach (var notificationItem in db.NotifiedList)
+				{
+					//SendPostedEmail(notificationItem.Email, post);
+				}
+			}
+
+			return PartialView(createdPosts);
+		}
 
 		[AdminsOnly]
 		/// <summary>

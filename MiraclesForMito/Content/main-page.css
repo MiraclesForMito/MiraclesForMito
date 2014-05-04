@@ -150,11 +150,15 @@ div.public-blog-container
 	color: #3ABBA9;
 }
 
-	#BlogShareButtonContainer a.btn
-	{
-		margin: 0 auto;
-		padding: 10px 10px;
-	}
+#BlogShareButtonContainer a.btn
+{
+	margin: 0 auto;
+	padding: 10px 10px;
+}
+
+div.main-page-image-block:last-child{
+	margin-bottom: 2em;
+}
 
 /*Footer*/
 div.main-page-footer {

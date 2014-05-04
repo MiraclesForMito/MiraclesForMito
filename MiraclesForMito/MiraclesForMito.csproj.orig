@@ -158,10 +158,11 @@
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Models\InterestedUserSuccessViewModel.cs" />
-    <Compile Include="Models\InterestedUserModel.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Utilities\Upload\Author.cs" />
     <Compile Include="Utilities\Upload\BMLToBlogPostAdapter.cs" />
+>>>>>>> origin/HEAD
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -293,12 +294,16 @@
     <Content Include="Content\font-awesome-4.0.3\scss\_variables.scss" />
     <Content Include="Images\Help-And-Support-Miracles-For-Mito.png" />
     <Content Include="Images\Help-Support-Love-Miracles-For-Mito-Button.png" />
+<<<<<<< HEAD
+    <Content Include="Images\nav-brand-logo-smaller.png" />
+=======
     <Content Include="Images\living_room.png" />
     <Content Include="Images\mito_wristband_hold_hands.png" />
     <Content Include="Images\nav-brand-logo-smaller.png" />
     <Content Include="Images\samantha_and_smile.png" />
     <Content Include="Images\samantha_on_green.png" />
     <Content Include="Images\smile_against_leaves.png" />
+>>>>>>> origin/HEAD
     <Content Include="Scripts\jquery.color-2.1.2.min.js" />
     <Content Include="Views\Helpers.cshtml" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
@@ -548,17 +553,16 @@
     <Content Include="Views\Events\EventsPaginationBody.cshtml" />
     <Content Include="Views\Events\EventDisplayAllPartial.cshtml" />
     <Content Include="Views\Events\EventsPaginationPartial.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Blog\Adapt.cshtml" />
+=======
     <Content Include="Views\Admin\Upload.cshtml" />
     <Content Include="Views\Admin\BlogPostsUpload.cshtml" />
-    <Content Include="Views\Home\Sections\_InterestedUserFormPartial.cshtml" />
-    <Content Include="Views\Home\InterestedSuccess.cshtml" />
-    <Content Include="Views\Emails\_InterestedUserInfoPartial.cshtml" />
+>>>>>>> origin/HEAD
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
-    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
