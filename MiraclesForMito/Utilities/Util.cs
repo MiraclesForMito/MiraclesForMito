@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MiraclesForMito.Models;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace MiraclesForMito.Utilities
 {
@@ -14,6 +16,24 @@ namespace MiraclesForMito.Utilities
 			{
 				return "String.prototype.ResolveUrl = function(){ var sbaseUrl = '" + (VirtualPathUtility.ToAbsolute("~/")) + "'; return this.replace('~/', sbaseUrl); }";
 			}
+		}
+
+		/// <summary>
+		/// Converts input like "CamelCaseSentence"
+		/// Returns output like "Camel case sentence"
+		/// Used for Enum Templates
+		/// </summary>
+		/// <param name="camelCase">A string in camel case</param>
+		/// <returns>The same string in sentence case</returns>
+		public static string CamelCaseToSentenceCase(string camelCase)
+		{
+			Regex camelBoundExpression= new Regex("(a-b)(A-B)");
+
+			MatchEvaluator spacesBetweenCamelBounds = delegate(Match m){
+				return m.Groups[1].Value + " " + m.Groups[1].Value.ToLower();
+			};
+
+			return camelBoundExpression.Replace(camelCase, spacesBetweenCamelBounds);
 		}
 	}
 

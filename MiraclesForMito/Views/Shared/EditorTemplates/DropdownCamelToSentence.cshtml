@@ -1,0 +1,14 @@
+﻿@model Enum
+@using MiraclesForMito.Utilities.Util
+
+//Listing 22-19 for a specific kind of Enum
+//Listing 22-20 for any kind of Enum, esp value vs text
+
+@Html.DropDownListFor(m=>m, Enum.GetValues(Model.GetType())
+	.Cast<Enum>()
+	.Select(m=> { 
+		string enumVal = Enum.GetName(Model.GetType(), m); 
+		new SelectListItem { 
+			Selected = (Model.ToString() == enumVal, 
+			Text = CamelCaseToSentenceCase(enumVal), 
+			Value = enumVal }))
