@@ -291,13 +291,13 @@
     <Content Include="Content\font-awesome-4.0.3\scss\_spinning.scss" />
     <Content Include="Content\font-awesome-4.0.3\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.0.3\scss\_variables.scss" />
+    <Content Include="Images\happy_friends.png" />
     <Content Include="Images\Help-And-Support-Miracles-For-Mito.png" />
     <Content Include="Images\Help-Support-Love-Miracles-For-Mito-Button.png" />
     <Content Include="Images\living_room.png" />
     <Content Include="Images\mito_wristband_hold_hands.png" />
     <Content Include="Images\nav-brand-logo-smaller.png" />
-    <Content Include="Images\samantha_and_smile.png" />
-    <Content Include="Images\samantha_on_green.png" />
+    <Content Include="Images\samantha_calvin_jacob.png" />
     <Content Include="Images\smile_against_leaves.png" />
     <Content Include="Scripts\jquery.color-2.1.2.min.js" />
     <Content Include="Views\Helpers.cshtml" />
