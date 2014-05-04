@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using MiraclesForMito.Models;
 using MiraclesForMito.Utilities;
+using System.Net.Mail;
+using System.IO;
 
 namespace MiraclesForMito.Controllers
 {
@@ -18,15 +20,44 @@ namespace MiraclesForMito.Controllers
 		[HttpPost]
 		public ActionResult Index(InterestedUserModel model)
 		{
-			//To pass it in to _Layout.cshtml which calls Footer which calls _InterestedUserPartial
-			ViewBag.InterestedUserModel = model;
-
 			if (ModelState.IsValid)
 			{
-				return View("SuccessfulInterest", model);
+				//Have the information we need, now try to send a mesage
+				string sendTo = "theredpea@gmail.com";
+				string body;
+				using (StringWriter sw = new StringWriter()){
+					//http://stackoverflow.com/a/2759898/1175496
+					ViewData.Model = model;
+					var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, "~/Views/Emails/_InterestedUserInfoPartial.cshtml");
+					var viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
+					viewResult.View.Render(viewContext, sw);
+					viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
+					body = sw.GetStringBuilder().ToString();
+				}
+
+				MailMessage msg = new MailMessage(EmailHelpers.SEND_EMAIL_ADDRESS, sendTo)
+				{
+					Subject = "Miracles for Mito Interested Person!",
+					Body = body,
+					IsBodyHtml = true
+				};
+
+				InterestedSuccessViewModel viewModel = new InterestedSuccessViewModel{
+					InterestedUserModel = model,
+					SendTo = sendTo,
+					EmailMessage = msg,
+					SuccessfullySentEmail = EmailHelpers.SendEmail(msg),
+				};
+
+				return View("InterestedSuccess", viewModel);
+			}
+			else
+			{
+				//Modern browsers will validate client-side, but if not, re-populate the form and ValidationSummary() explains the problems
+				ViewBag.InterestedUserModel = model;
+				return View(model);
 			}
 
-			return View(model);
 		}
 
 		public ActionResult Unsubscribe()
