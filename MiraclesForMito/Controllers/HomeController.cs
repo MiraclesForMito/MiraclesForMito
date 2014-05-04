@@ -15,6 +15,22 @@ namespace MiraclesForMito.Controllers
 			return View();
 		}
 
+		[HttpPost]
+		public ActionResult Index(InterestedUserModel model)
+		{
+			//To pass it in to _Layout.cshtml which calls Footer which calls _InterestedUserPartial
+			ViewBag.InterestedUserModel = model;
+
+			if (ModelState.IsValid)
+			{
+				string successMessage = string.Format("Thank you {}, we have your information and we'll reach out to you soon", model.FirstName);
+				//ModelState.Add("SuccessMessage", new ModelState());
+				TempData.Add("SuccessMessage", successMessage);
+			}
+
+			return View(model);
+		}
+
 		public ActionResult Unsubscribe()
 		{
 			var id = RouteData.Values["id"];

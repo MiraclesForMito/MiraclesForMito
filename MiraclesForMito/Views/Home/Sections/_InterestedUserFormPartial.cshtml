@@ -1,6 +1,11 @@
 ﻿@model MiraclesForMito.Models.InterestedUserModel
 
-@using (@Html.BeginForm( new { role="form", action="#", method="post"})){
+@*
+By default, the Form is POST
+By default, the Form is returned to the Controller/Action which Rendered it 
+*@
+
+@using (@Html.BeginForm()){
 
 	<div class="row">
 		
@@ -10,11 +15,9 @@
 					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 						<div class="form-group">
 						@{
-							object formControlClass = new {@class = "form-control"};
+							object formControlClass = new {@class = "form-control", required="required"};
 						}
-						@*
-						Listing 26-4, must use TextBoxFor, no EditorFor, if want Bootstrap styling?
-						*@
+
 							@Html.LabelFor(m=>m.FirstName)
 							@Html.TextBoxFor(m=>m.FirstName, formControlClass)
 						</div>
@@ -26,11 +29,11 @@
 					<div class="col-lg-6 col-md-6 col-sm-6  col-xs-6">
 						<div class="form-group">
 							@Html.LabelFor(m=>m.Email)
-							@Html.TextBoxFor(m=>m.Email, formControlClass)
+							@Html.TextBoxFor(m=>m.Email, new {@class = "form-control", required="required", type="email"})
 						</div>
 						<div class="form-group">
 							@Html.LabelFor(m=>m.PhoneNumber)
-							@Html.TextBoxFor(m=>m.PhoneNumber, formControlClass)
+							@Html.TextBoxFor(m=>m.PhoneNumber, new {@class = "form-control", required="required", type="tel"})
 						</div>
 					</div>
 				</div>

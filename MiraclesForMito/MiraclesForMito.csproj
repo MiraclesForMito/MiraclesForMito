@@ -550,12 +550,12 @@
     <Content Include="Views\Blog\Adapt.cshtml" />
     <Content Include="Views\Admin\Upload.cshtml" />
     <Content Include="Views\Admin\BlogPostsUpload.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\DropdownCamelToSentence.cshtml" />
     <Content Include="Views\Home\Sections\_InterestedUserFormPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
+    <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

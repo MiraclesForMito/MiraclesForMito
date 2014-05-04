@@ -7,7 +7,7 @@
 			@*
 			http://stackoverflow.com/a/5248218/1175496
 			*@
-			@{ Html.RenderPartial("~/Views/Home/Sections/_InterestedUserFormPartial.cshtml", new MiraclesForMito.Models.InterestedUserModel()); }
+			@{ Html.RenderPartial("~/Views/Home/Sections/_InterestedUserFormPartial.cshtml", (ViewBag.InterestedUserModel as MiraclesForMito.Models.InterestedUserModel) ?? new MiraclesForMito.Models.InterestedUserModel()); }
 		</div>
 
 		<div class="col-lg-4">
