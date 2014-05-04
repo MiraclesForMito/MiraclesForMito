@@ -13,10 +13,7 @@
 			</div>
 			<div class="panel-body">
 				<p>Thanks @Model.InterestedUserModel.FirstName!</p>
-				@*
-					TODO: Switch to !
-				*@
-				@if (Model.SuccessfullySentEmail){
+				@if (!Model.SuccessfullySentEmail){
 					<p>However, something went wrong.</p>
 					if (Model.EmailMessage!=null && Model.SendTo!=null){
 						<p> Try sending us an email directly by

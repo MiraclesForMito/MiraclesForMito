@@ -23,7 +23,8 @@ namespace MiraclesForMito.Controllers
 			if (ModelState.IsValid)
 			{
 				//Have the information we need, now try to send a mesage
-				string sendTo = "theredpea@gmail.com";
+				//TODO: Get a better email address?
+				string sendTo = EmailHelpers.SEND_EMAIL_ADDRESS;
 				string body;
 				using (StringWriter sw = new StringWriter()){
 					//http://stackoverflow.com/a/2759898/1175496
