@@ -20,7 +20,7 @@
 					<p>However, something went wrong.</p>
 					if (Model.EmailMessage!=null && Model.SendTo!=null){
 						<p> Try sending us an email directly by
-							<a target="_blank" href="mailto:@Model.SendTo?body:@Html.Encode(Model.EmailMessage.Body)&subject:@Model.EmailMessage.Subject">clicking here</a>.</p>
+							<a target="_blank" href="mailto:@Model.SendTo?subject=@Url.Encode(Model.EmailMessage.Subject)@Html.Raw("&")body=@Url.Encode(Model.SimpleEmailMessage)">clicking here</a>.</p>
 					} else {
 						<p> Try again later.</p>
 					}

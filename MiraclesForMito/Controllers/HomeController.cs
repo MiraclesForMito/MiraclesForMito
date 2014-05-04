@@ -37,7 +37,7 @@ namespace MiraclesForMito.Controllers
 
 				MailMessage msg = new MailMessage(EmailHelpers.SEND_EMAIL_ADDRESS, sendTo)
 				{
-					Subject = "Miracles for Mito Interested Person!",
+					Subject = "Miracles for Mito Interested Person",
 					Body = body,
 					IsBodyHtml = true
 				};
