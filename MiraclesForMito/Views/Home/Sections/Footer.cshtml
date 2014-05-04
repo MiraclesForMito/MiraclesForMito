@@ -5,7 +5,8 @@
 
 		<div class="col-lg-4">
 			@*
-			http://stackoverflow.com/a/5248218/1175496
+			On RenderPartial vs Render http://stackoverflow.com/a/5248218/1175496
+			On passing a model to a Layout page, which I haven't done  http://stackoverflow.com/a/13231752/1175496
 			*@
 			@{ Html.RenderPartial("~/Views/Home/Sections/_InterestedUserFormPartial.cshtml", (ViewBag.InterestedUserModel as MiraclesForMito.Models.InterestedUserModel) ?? new MiraclesForMito.Models.InterestedUserModel()); }
 		</div>

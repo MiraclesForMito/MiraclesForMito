@@ -23,7 +23,7 @@ namespace MiraclesForMito.Controllers
 
 			if (ModelState.IsValid)
 			{
-				string successMessage = string.Format("Thank you {}, we have your information and we'll reach out to you soon", model.FirstName);
+				string successMessage = string.Format("Thank you {0}, we have your information and we'll reach out to you soon", model.FirstName);
 				//ModelState.Add("SuccessMessage", new ModelState());
 				TempData.Add("SuccessMessage", successMessage);
 			}
