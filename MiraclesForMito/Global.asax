@@ -1,1 +1,1 @@
-﻿<%@ Application CodeFile="Global.asax.cs" Inherits="MiraclesForMito.MvcApplication" Language="C#" %>
+﻿<%@ Application CodeBehind="Global.asax.cs" Inherits="MiraclesForMito.MvcApplication" Language="C#" %>
