@@ -1,0 +1,72 @@
+﻿@using MiraclesForMito.Models;
+
+@{
+	SiteDB db = new SiteDB();
+    List<Event> mitoEvents = new List<Event>();
+    int iNumberOfEventsToDisplay = 4;
+    
+    if (db.Events != null && db.Events.Count() > 0)
+    {
+        mitoEvents.AddRange(db.Events.Where(e => e.StartDate.HasValue && e.StartDate >= DateTime.Today));   
+    }
+}
+
+<a id="about"></a>
+
+<div class="row main-page-image-block">
+	<div class="col-md-12 col-lg-12">
+		<img src="~/Images/mito_wristband_hold_hands.png" />
+	</div>
+</div>
+
+<div class="row main-page-section">
+	<div class="col-md-12 col-lg-10 col-md-offset-0 col-lg-offset-1">
+
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<div class="row about-page-header page-header">
+					<div class="hidden-xs col-sm-2">
+						<i class="fa fa-heart-o"></i>
+					</div>
+					<div class="col-xs-12 col-sm-10">
+						<p class="heart-text">We strive to create awareness, education and support.<br />
+						No one should ever walk this journey alone.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-lg-6">
+				<h4>Miracles for Mito: In the spirit of strength</h4>
+				<p>
+					Miracles for Mito’s mission is to ensure that no individual or family has to be alone while trying to understand a complicated mitochondrial diagnosis.
+				</p>
+				<p>
+					Our mission is to improve the resources and information available to individuals and families that are coping with Mitochondrial Disease in the Rocky Mountain Region.  We are focused on awareness, education, support and advocacy for children and adults.
+				</p>
+				<p>
+					We will create partnerships worldwide to help understand and share the most recent research, patient therapies and resources available in the Rocky Mountain Region.
+				</p>
+			</div>
+
+            @if(mitoEvents != null && mitoEvents.Count > 0)
+            {
+			    <div class="col-md-6 col-lg-6 events-container">
+				    <h4>Events</h4>
+                    @foreach (Event mitoEvent in mitoEvents.Take(iNumberOfEventsToDisplay))
+                    {
+                        Html.RenderPartial("~/Views/Home/Sections/AboutEventsPartial.cshtml", mitoEvent);
+                    }
+                
+                    @if (mitoEvents.Count > iNumberOfEventsToDisplay)
+                    {// add the view all link
+                        <a class="block-link view-all" href="~/Events/Index">VIEW ALL EVENTS</a>
+                    }
+                </div>
+            }
+
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,350 @@
+﻿@using MiraclesForMito.Models;
+@model Event
+
+@{
+    ViewBag.Title = "Edit Event";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	ViewBag.Active = "event";
+	Event modelToUse = Model;
+	bool bIsCreate = false;
+	
+	// Model
+	if (modelToUse == null)
+	{
+		modelToUse = new Event(){ ID = -1 };
+		bIsCreate = true;
+		ViewBag.Title = "Create Event";
+	}
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="row main-page-section">
+	<div class="col-md-12 col-lg-10 col-md-offset-0 col-lg-offset-1">
+
+		<div class="row">
+			<div class="col-md-12 col-lg-12">
+				<form id="EventEditForm" action="~/API/Event/" method="put" class="form-horizontal" role="form">
+
+					<input type="hidden" id="id" name="id" value="@modelToUse.ID" />
+
+					<div class="form-group">
+						<label for="Name" class="col-sm-2 control-label">Name</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="Name" name="name" placeholder="Name" value="@modelToUse.Name" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="SEOLink" class="col-sm-2 control-label">SEO Link</label>
+						<div class="col-sm-8">
+							<div class="input-group">
+								<span class="input-group-addon">http://@(Request.Url.Host)/Event/</span>
+								<input type="text" class="form-control disabled" id="SEOLink" name="SEOLink" placeholder="" value="@modelToUse.SEOLink" readonly />
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="Description" class="col-sm-2 control-label">Description</label>
+						<div class="col-sm-8">
+							<textarea class="form-control" id="Description" name="description" placeholder="Description">@modelToUse.Description</textarea>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="StartDate" class="col-sm-2 control-label">Start Date</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="StartDateCalendar" name="StartDateCalendar" placeholder="Start Date" value="@((modelToUse.StartDate.HasValue) ? modelToUse.StartDate.Value.ToString("MM/dd/yyyy") : "")" />							
+							<input type="hidden" class="form-control" id="StartDateMS" name="StartDateMS" value="@modelToUse.StartDateMS" />
+						</div>
+						<div class="col-sm-2">
+							<select id="StartDateHour" name="StartDateHour" class="form-control hour-value">
+								@for (int i = 1; i < 13; i++)
+								{
+									<option value="@i">@i</option>
+								}
+							</select>
+						</div>
+						<div class="col-sm-2">
+							<select id="StartDateMinute" name="StartDateMinute" class="form-control minute-value">
+								@for (int i = 0; i < 60; i++)
+								{
+									string sVal = (i < 10) ? string.Format("0{0}", i) : i.ToString();
+
+									<option value="@sVal">@sVal</option>
+								}
+							</select>
+						</div>
+						<div class="col-sm-2">
+							<select id="StartDateTimeOfDay" name="StartDateTimeOfDay" class="form-control time-of-day-value">
+								<option value="AM">AM</option>
+								<option value="PM">PM</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="EndDate" class="col-sm-2 control-label">End Date</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="EndDateCalendar" name="EndDateCalendar" placeholder="End Date" value="@((modelToUse.EndDate.HasValue) ? modelToUse.EndDate.Value.ToString("MM/dd/yyyy") : "")" />
+							<input type="hidden" class="form-control" id="EndDateMS" name="EndDateMS" value="@modelToUse.EndDateMS" />							
+						</div>
+						<div class="col-sm-2">
+							<select id="EndDateHour" name="EndDateHour" class="form-control hour-value">
+								@for (int i = 1; i < 13; i++)
+								{
+									<option value="@i">@i</option>
+								}
+							</select>
+						</div>
+						<div class="col-sm-2">
+							<select id="EndDateMinute" name="EndDateMinute" class="form-control minute-value">
+								@for (int i = 0; i < 60; i++)
+								{
+									string sVal = (i < 10) ? string.Format("0{0}", i) : i.ToString();
+
+									<option value="@sVal">@sVal</option>
+								}
+							</select>
+						</div>
+						<div class="col-sm-2">
+							<select id="EndDateTimeOfDay" name="EndDateTimeOfDay" class="form-control time-of-day-value">
+								<option value="AM">AM</option>
+								<option value="PM">PM</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label bg-info">Location Info</label>
+						<div class="col-sm-10">
+							<span class="help-block">The information below let's people know where the event is.</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="Address" class="col-sm-2 control-label">Venue</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="VenueName" name="VenueName" placeholder="Venue Name" value="@modelToUse.VenueName" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="Address" class="col-sm-2 control-label">Address</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="Address" name="Address" placeholder="Address" value="@modelToUse.Address" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="City" class="col-sm-2 control-label">City/State/ZIP</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="City" name="City" placeholder="City" value="@modelToUse.City" />
+						</div>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="State" name="State" placeholder="State" value="@modelToUse.State" />
+						</div>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="Zip" name="Zip" placeholder="Zip" value="@modelToUse.Zip" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Contact Info</label>
+						<div class="col-sm-10">
+							<span class="help-block">The information below is the person or company to contact about event details.</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="ContactName" class="col-sm-2 control-label">Person/Company</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="ContactName" name="ContactName" placeholder="Person/Company Name" value="@modelToUse.ContactName" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="ContactEmail" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="ContactEmail" name="ContactEmail" placeholder="Contact Email" value="@modelToUse.ContactEmail" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="ContactNumber" class="col-sm-2 control-label">Number</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="ContactNumber" name="ContactNumber" placeholder="Contact Number" value="@modelToUse.ContactNumber" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="ContactNumber" class="col-sm-2 control-label">Registration Link</label>
+						<div class="col-sm-7">
+							<input type="text" class="form-control" id="RegistrationLink" name="RegistrationLink" placeholder="Registration Link" value="@modelToUse.RegistrationLink" />
+						</div>
+					</div>
+			
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-6">
+							<button type="submit" class="btn btn-success">@(bIsCreate ? "Save Event" : "Save Changes")</button>
+							<button id="CancelChanges" type="button" class="btn btn-danger">Cancel</button>
+						</div>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+@section scripts{
+	<script type="text/javascript">
+		$(function ()
+		{
+			var jEventEditForm = $("#EventEditForm");
+			var $startCalendar = $("#StartDateCalendar");
+			var $endCalendar = $("#EndDateCalendar");
+			var $seoLinkInput = $("#SEOLink");
+			var iSEOUrlCharacterCutOff = 60;
+
+			$("#Name").on(
+				"keyup",
+				function()
+				{
+					setSEOLinkValFromTitle($(this).val(), true);
+				}
+			);
+
+			var setSEOLinkValFromTitle = function(sVal, bCleanUpTrailingHyphens)
+			{
+				// if it has a value we will clean up the title and turn it into a more SEO friendly link
+				if(sVal)
+				{
+					// we only want letters, numbers, hyphens and spaces
+					var sanitizeRE = /[^A-Za-z0-9 \-]/gi;
+
+					// sanitize the value
+					var sSanitized = sVal.replace(sanitizeRE, "");
+
+					// we want the urls to have dashes instead of spaces to make them more SEO Friendly
+					var sSEOFriendly = sSanitized.replace(/ /g, "-");
+
+					// we don't want the url to be longer than 60 characters
+					sSEOFriendly = sSEOFriendly.substring(0, iSEOUrlCharacterCutOff);
+
+					// if the last character is 
+					if(!bCleanUpTrailingHyphens && sSEOFriendly.lastIndexOf("-") == (sSEOFriendly.length - 1))
+					{
+						sSEOFriendly = sSEOFriendly.substring(0, (sSEOFriendly.length - 1));
+					}
+
+					// replace multiple hyphen instances
+					sSEOFriendly = sSEOFriendly.replace(/-{2,}/g,"-");
+
+					// set the SEO Link value to the sanitized string replacing any spaces with dashes
+					$seoLinkInput.val(sSEOFriendly);
+				}
+				else if(!sVal)
+				{
+					$seoLinkInput.val("");
+				}
+			};
+
+			$startCalendar.datepicker({changeYear: true, changeMonth: true});
+			$endCalendar.datepicker({changeYear: true, changeMonth: true});
+
+			$("#CancelChanges").on("click", function(){
+				var bConfirmCancel = confirm("Are you sure you want to cancel? Any changes made will not be saved.");
+
+				if(bConfirmCancel)
+				{
+					window.location = "~/Admin/Events".ResolveUrl();
+				}
+			});
+
+			function constructDateValue($calendarInput, $inputToSet)
+			{				
+				if(!$calendarInput.val()) { return null; }
+
+				// get the selected date
+				var date = $calendarInput.datepicker("getDate");
+
+				var $formGroup = $calendarInput.closest("div.form-group");
+				var sHourValue = $formGroup.find("select.hour-value").val();
+				var sMinuteValue = $formGroup.find("select.minute-value").val();
+				var iHours = Number(sHourValue);
+				var iMinute = Number(sMinuteValue);
+
+				if($formGroup.find("select.time-of-day-value").val() == "PM")
+				{
+					iHours += 12;
+				}
+				
+				$inputToSet.val(new Date(date.getFullYear(), date.getMonth(), date.getDate(), iHours, iMinute, 0).toOADate());
+			}
+
+			jEventEditForm.submit(function (e)
+			{
+				e.preventDefault();
+
+				var sUrl = "~/API/Event/".ResolveUrl();
+				var sAction = "PUT";
+				// written from serverside.
+				var bIsCreate = @bIsCreate.ToString().ToLower();
+				var sSuccesMessage = "Updated!";
+				var sFailMessage = "Failed to update!";
+
+				if (bIsCreate)
+				{
+					sAction = "POST";
+					sSuccesMessage = "Created!";
+					sFailMessage = "Failed to create!";
+				}
+				else
+				{
+					sUrl += $('#id').val();
+				}
+
+				//set the value to the content of the tinyMCE editor
+				$("#Description").val(tinymce.activeEditor.getContent());
+
+				// set the calendar values
+				constructDateValue($startCalendar, $("#StartDateMS"));
+				constructDateValue($endCalendar, $("#EndDateMS"));
+				
+				$.ajax({
+					url: sUrl,
+					type: sAction,
+					data: jEventEditForm.serialize()
+				})
+				.done(
+					function ()
+					{
+						alert(sSuccesMessage);
+						window.location = "~/Admin/Events".ResolveUrl();
+					}
+				)
+				.fail(function () { alert(sFailMessage) });
+			});
+
+			// the base url in hosted environments gets a little screwy
+			tinyMCE.baseURL = '~/Scripts/tinymce'.ResolveUrl();
+
+			tinymce.init({
+				selector: "#Description",
+				plugins: [
+					"advlist autolink lists link image charmap print preview anchor",
+					"searchreplace visualblocks code fullscreen",
+					"insertdatetime media table contextmenu paste"
+				],
+				menubar: false,
+				height: 250,				
+				toolbar: "undo redo | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+			});
+
+		});
+	</script>
+}

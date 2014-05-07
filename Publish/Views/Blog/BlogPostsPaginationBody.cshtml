@@ -1,0 +1,22 @@
+﻿@using MiraclesForMito.Models;
+@using System.Linq;
+@using System.Data.Entity.Core.Objects;
+
+@model BlogPaginationModel
+
+@if (Model.SortedAndFilteredPosts.Count() == 0)
+{
+	<h4>@Model.NoPostsMessage</h4>
+}
+else
+{
+	int iCounter = 0;
+	int iTotalCount = Model.SortedAndFilteredPosts.Count();
+	foreach (BlogPost post in Model.SortedAndFilteredPosts)
+	{
+		<div class="row @(iCounter == (iTotalCount - 1) ? "row-last" : "")">
+			@Html.Partial("~/Views/Blog/BlogSinglePostPartial.cshtml", post)
+		</div>
+		iCounter++;
+	}
+}

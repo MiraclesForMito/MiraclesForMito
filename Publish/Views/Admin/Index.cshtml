@@ -1,0 +1,51 @@
+﻿@{
+	ViewBag.Title = "Admin Login";
+	Layout = "~/Views/Shared/_AdminLoginLayout.cshtml";
+}
+
+
+<div class="row">
+	<div class="col-xs-10 col-sm-8 col-md-6 col-lg-4 col-xs-offset-1 col-sm-offset-2 col-md-offset-3 col-lg-offset-4 clearfix">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Miracles for Mito Login</h3>
+			</div>
+			<div class="panel-body">
+				@if (((bool?)ViewBag.FailedLogin).GetValueOrDefault(false))
+				{
+					<div class="alert alert-danger alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<strong>Failed</strong> Invalid login attempt!
+					</div>
+				}
+				<form class="form-horizontal" role="form" method="post">
+
+					<div class="col-sm-12 col-sm-offset-0">
+						<div class="form-group">
+							<label for="Email">Email address</label>
+							<input type="email" class="form-control" id="Email" name="Email" placeholder="Enter email" required />
+						</div>
+
+						<div class="form-group">
+							<label for="Password">Password</label>
+							<input type="password" class="form-control" id="Password" name="Password" placeholder="Password" required />
+							<a href="~/Admin/ForgotPassword" title="Click here to reset your password">Forgot Password?</a>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-12">
+							<button type="submit" class="btn btn-info btn-lg btn-block">Sign in</button>
+						</div>
+					</div>
+
+				</form>
+				<a href="~/" title="Click to go back to the public site"><span class="glyphicon glyphicon-arrow-left"></span> Back to the site</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section scripts
+{
+}

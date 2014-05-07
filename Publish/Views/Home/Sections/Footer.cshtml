@@ -1,0 +1,66 @@
+﻿<a id="footer"></a>
+<div class="row main-page-footer">
+
+	<div class="row">
+
+		<div class="col-lg-4">
+			@*
+			On RenderPartial vs Render http://stackoverflow.com/a/5248218/1175496
+			On passing a model to a Layout page, which I haven't done  http://stackoverflow.com/a/13231752/1175496
+			*@
+			@{ Html.RenderPartial("~/Views/Home/Sections/_InterestedUserFormPartial.cshtml", (ViewBag.InterestedUserModel as MiraclesForMito.Models.InterestedUserModel) ?? new MiraclesForMito.Models.InterestedUserModel()); }
+		</div>
+
+		<div class="col-lg-4">
+			<div class="row">
+				<div class="col-lg-12 col-md-4 col-sm-4 visible-lg visible-md visible-sm visible-xs">
+                    <p>
+                        Maria Hopfgarten<br />
+                        303.319.8219<br />
+                        <a href="mailto:mhopfgarten@gmail.com">mhopfgarten@gmail.com</a>
+                    </p>
+                    <p>Heather Schichtel<br />
+                        <a href="mailto:heather.schichtel@gmail.com">heather.schichtel@gmail.com</a>
+                    </p>
+                </div>
+                <div class="col-lg-12 col-md-4 col-sm-4 visible-lg visible-md visible-sm hidden-xs">
+					<h3>Donate by mail</h3>
+					<address>
+						<strong>Miracles for Mito</strong><br />
+						789 Sherman Street Suite 250<br />
+						Denver, CO 80203
+					</address>
+				</div>
+				<div class="col-lg-12 col-md-4 col-sm-4 text-center hidden-lg hidden-md hidden-sm visible-xs">
+					<h3>Donate by mail</h3>
+					<address>
+						<strong>Miracles for Mito</strong><br />
+						789 Sherman Street Suite 250<br />
+						Denver, CO 80203
+					</address>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-4">
+			<div class="page-header">
+				<a href="https://www.google.com/maps?q=789+Sherman+St+%23250,+Denver,+CO+80205&ll=39.72932,-104.98526&spn=0.002546,0.004823&t=m&hnear=789+Sherman+St+%23250,+Denver,+Colorado+80205&z=18&iwloc=A">map</a>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row foot-notes">
+
+		<div class="col-lg-6">
+			<p>Copyright &copy; @DateTime.Now.Year Miracles for Mito. All rights reserved</p>
+		</div>
+
+		<div class="col-lg-6 clearfix">
+			<a class="pull-right" href="http://www.facebook.com/pages/Miracles-for-Mito/146375572070958" title="Click to connect with us on Facebook" target="_blank"><i class="fa fa-facebook"></i></a>
+			<a class="pull-right" href="http://twitter.com/miraclesformito" title="Click to follow with us on twitter"  target="_blank"><i class="fa fa-twitter"></i></a>
+			<a class="pull-right" rel="nofollow" href="~/Admin/" title="Click to login to the admin portal"><span class="glyphicon glyphicon-user"></span></a>
+		</div>
+
+	</div>
+
+</div>

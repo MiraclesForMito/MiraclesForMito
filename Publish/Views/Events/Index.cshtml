@@ -1,0 +1,83 @@
+﻿@using MiraclesForMito.Models;
+
+@{
+    ViewBag.Title = "Events";
+    ViewBag.IsHomePage = true;
+    SiteDB db = new SiteDB();
+}
+
+<div class="row main-page-section">
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li class="active">Events</li>
+            </ol>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel-group" id="accordion">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#PastEvents">Past Events
+                        </a>
+                    </h4>
+                </div>
+                <div id="PastEvents" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        @Html.Partial(
+                            "~/Views/Events/EventsPaginationPartial.cshtml",
+                            new EventPaginationModel(EventViewType.Archive, Model)
+                            {
+                                AJAXUrl = "~/Events/PaginateEvents"
+                            }
+                        )
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#UpcomingEvents">Upcoming Events
+                        </a>
+                    </h4>
+                </div>
+                <div id="UpcomingEvents" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        @Html.Partial(
+                            "~/Views/Events/EventsPaginationPartial.cshtml",
+                            new EventPaginationModel(EventViewType.Upcoming, Model)
+                            {
+                                AJAXUrl = "~/Events/PaginateEvents"
+                            }
+                        )
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#TBAEvents">TBA Events
+                        </a>
+                    </h4>
+                </div>
+                <div id="TBAEvents" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        @Html.Partial(
+                            "~/Views/Events/EventsPaginationPartial.cshtml",
+                            new EventPaginationModel(EventViewType.TBA, Model)
+                            {
+                                AJAXUrl = "~/Events/PaginateEvents"
+                            }
+                        )
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

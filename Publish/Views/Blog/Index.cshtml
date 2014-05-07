@@ -1,0 +1,141 @@
+﻿@using MiraclesForMito.Models;
+
+@model BlogPaginationModel
+
+@{
+    ViewBag.Title = "Miracles for Mito Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row public-blog-container main-page-section">
+
+	<div class="col-md-12 col-lg-10 col-md-offset-0 col-lg-offset-1">
+
+		<div class="row">
+			
+			<div class="col-sm-12 col-md-4 pull-right">
+				@Html.Partial("~/Views/Blog/BlogSearchPartial.cshtml")
+				@Html.Partial("~/Views/Blog/NewsletterFormPartial.cshtml")
+				@Html.Partial("~/Views/Blog/BlogShareButtonsPartial.cshtml")
+			</div>
+
+			<div class="col-sm-12 col-md-8">
+
+				<div id="BlogPostsPaginationContainer"
+					class="clear-fix pagination-container"
+					data-pageSize="@Model.PageSize"
+					data-pageIndex="@Model.PageIndex"
+					data-totalCount="@Model.TotalCount"
+					data-ajaxUrl="@Model.AJAXUrl"
+					data-additionalData="@Model.AdditionalData">
+
+					<div class="pagination-body">
+						@Html.Partial("~/Views/Blog/BlogPostsPaginationBody.cshtml", Model)
+					</div>
+
+					<div class="pagination-footer clear-fix">
+						<a class="btn btn-default pagination-link pagination-link-next pull-right" href="javascript:void(0);">
+							Next
+							<span class="glyphicon glyphicon-chevron-right"></span>
+						</a>
+						<a class="btn btn-default pagination-link pagination-link-previous pull-right" href="javascript:void(0);">
+							<span class="glyphicon glyphicon-chevron-left"></span>
+							Previous
+						</a>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+@section scripts
+{
+	<script type="text/javascript">
+		$(function ()
+		{
+			$("#BlogSearchForm").on("submit", function ()
+			{
+				var $form = $(this);
+				$form.find("button[type=submit]").text("Searching...");
+				$form.attr("action", $form.attr("action") + $("#BlogSearchInput").val());
+			});
+
+			var $NewsletterEmailInput = $("#NewsletterEmailInput");
+			var $NewsletterForm = $("#NewsletterForm");
+
+			var addNewsletterSuccessAlert = function ()
+			{
+				// construct the fail alert HTML
+				var arAlertHTML = [
+					'<div class="hide alert alert-success alert-dismissable">',
+						'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
+						'<strong>Email Added!</strong> You will receive emails whenever a new blog post is added.',
+					'</div>'
+				];
+
+				// prepend the html to the form
+				$NewsletterForm.prepend(arAlertHTML.join(''));
+			};
+
+			var addNewsletterFailAlert = function ()
+			{
+				// construct the fail alert HTML
+				var arAlertHTML = [
+					'<div class="hide alert alert-danger alert-dismissable">',
+						'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>',
+						'<strong>Invalid Email!</strong> Please enter a valid email address.',
+					'</div>'
+				];
+
+				// prepend the html to the form
+				$NewsletterForm.prepend(arAlertHTML.join(''));
+			};
+
+			$NewsletterForm.on("submit", function (e)
+			{
+				// don't let the page reload
+				e.preventDefault();
+
+				var $form = $(this);
+
+				$form.find("button[type=submit]").text("Subscribing...");
+
+				// always remove the alerts
+				$form.find("div.alert-success, div.alert-danger").remove();
+
+				var sVal = $NewsletterEmailInput.val();
+
+				$.ajax({
+					url: $form.attr("action").ResolveUrl(),
+					type: "POST",
+					dataType: "json",
+					data: {
+						email: $NewsletterEmailInput.val() // email will be validated on the serverside
+					}
+				})
+				.always(function ()
+				{
+					$form.find("button[type=submit]").text("Subscribe");
+				})
+				.done(function ()
+				{
+					addNewsletterSuccessAlert();
+					$NewsletterEmailInput.val("").blur();
+					$form.find("div.alert-success").removeClass("hide");
+				})
+				.fail(function ()
+				{
+					addNewsletterFailAlert();
+					$form.find("div.alert-danger").removeClass("hide");
+				});
+			});
+		});
+	</script>
+}
