@@ -154,6 +154,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
+    <Compile Include="Controllers\MitoWalk2015Controller.cs" />
     <Compile Include="Controllers\NotifiedListItemController.cs" />
     <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
@@ -291,10 +292,16 @@
     <Content Include="Content\font-awesome-4.0.3\scss\_spinning.scss" />
     <Content Include="Content\font-awesome-4.0.3\scss\_stacked.scss" />
     <Content Include="Content\font-awesome-4.0.3\scss\_variables.scss" />
+    <Content Include="Images\about.jpg" />
+    <Content Include="Images\enjoying_outdoors.jpg" />
+    <Content Include="Images\grants.jpg" />
     <Content Include="Images\happy_friends.png" />
     <Content Include="Images\Help-And-Support-Miracles-For-Mito.png" />
     <Content Include="Images\Help-Support-Love-Miracles-For-Mito-Button.png" />
     <Content Include="Images\living_room.png" />
+    <Content Include="Images\MitoWalk2015\check.png" />
+    <Content Include="Images\MitoWalk2015\SAJ.png" />
+    <Content Include="Images\MitoWalk2015\sam.png" />
     <Content Include="Images\mito_wristband_hold_hands.png" />
     <Content Include="Images\nav-brand-logo-smaller.png" />
     <Content Include="Images\samantha_calvin_jacob.png" />
@@ -555,6 +562,7 @@
     <Content Include="Views\Home\Sections\_InterestedUserFormPartial.cshtml" />
     <Content Include="Views\Home\InterestedSuccess.cshtml" />
     <Content Include="Views\Emails\_InterestedUserInfoPartial.cshtml" />
+    <Content Include="Views\MitoWalk2015\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
