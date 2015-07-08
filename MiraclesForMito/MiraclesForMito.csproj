@@ -154,6 +154,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
+    <Compile Include="Controllers\FundRaiser2015Controller.cs" />
     <Compile Include="Controllers\MitoWalk2015Controller.cs" />
     <Compile Include="Controllers\NotifiedListItemController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -294,6 +295,15 @@
     <Content Include="Content\font-awesome-4.0.3\scss\_variables.scss" />
     <Content Include="Images\about.jpg" />
     <Content Include="Images\enjoying_outdoors.jpg" />
+    <Content Include="Images\Fundraiser2015\CVA.jpg" />
+    <Content Include="Images\Fundraiser2015\dinner.jpg" />
+    <Content Include="Images\Fundraiser2015\dinner2.jpg" />
+    <Content Include="Images\Fundraiser2015\maria_heather.jpg" />
+    <Content Include="Images\Fundraiser2015\mfm.jpg" />
+    <Content Include="Images\Fundraiser2015\mfm2.jpg" />
+    <Content Include="Images\Fundraiser2015\mfm_hands.jpg" />
+    <Content Include="Images\Fundraiser2015\SilentAuction.jpg" />
+    <Content Include="Images\Fundraiser2015\SilentAuction2.jpg" />
     <Content Include="Images\grants.jpg" />
     <Content Include="Images\happy_friends.png" />
     <Content Include="Images\Help-And-Support-Miracles-For-Mito.png" />
@@ -566,6 +576,7 @@
     <Content Include="Views\Home\InterestedSuccess.cshtml" />
     <Content Include="Views\Emails\_InterestedUserInfoPartial.cshtml" />
     <Content Include="Views\MitoWalk2015\Index.cshtml" />
+    <Content Include="Views\FundRaiser2015\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
