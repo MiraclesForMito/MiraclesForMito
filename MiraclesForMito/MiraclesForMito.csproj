@@ -21,6 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -155,6 +156,7 @@
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Controllers\FundRaiser2015Controller.cs" />
+    <Compile Include="Controllers\MitoWalk2016Controller.cs" />
     <Compile Include="Controllers\MitoWalk2015Controller.cs" />
     <Compile Include="Controllers\NotifiedListItemController.cs" />
     <Compile Include="Controllers\EventController.cs" />
@@ -577,6 +579,7 @@
     <Content Include="Views\Emails\_InterestedUserInfoPartial.cshtml" />
     <Content Include="Views\MitoWalk2015\Index.cshtml" />
     <Content Include="Views\FundRaiser2015\Index.cshtml" />
+    <Content Include="Views\MitoWalk2016\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
