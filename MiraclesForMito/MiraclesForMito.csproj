@@ -155,6 +155,7 @@
     <Compile Include="Controllers\AdminUserController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\BlogPostController.cs" />
+    <Compile Include="Controllers\FundRaiser2016Controller.cs" />
     <Compile Include="Controllers\FundRaiser2015Controller.cs" />
     <Compile Include="Controllers\MitoWalk2016Controller.cs" />
     <Compile Include="Controllers\MitoWalk2015Controller.cs" />
@@ -306,6 +307,10 @@
     <Content Include="Images\Fundraiser2015\mfm_hands.jpg" />
     <Content Include="Images\Fundraiser2015\SilentAuction.jpg" />
     <Content Include="Images\Fundraiser2015\SilentAuction2.jpg" />
+    <Content Include="Images\Fundraiser2016\Header.png" />
+    <Content Include="Images\Fundraiser2016\car.jpg" />
+    <Content Include="Images\Fundraiser2016\HJ.JPG" />
+    <Content Include="Images\Fundraiser2016\Natalie.JPG" />
     <Content Include="Images\grants.jpg" />
     <Content Include="Images\happy_friends.png" />
     <Content Include="Images\Help-And-Support-Miracles-For-Mito.png" />
@@ -580,6 +585,7 @@
     <Content Include="Views\MitoWalk2015\Index.cshtml" />
     <Content Include="Views\FundRaiser2015\Index.cshtml" />
     <Content Include="Views\MitoWalk2016\Index.cshtml" />
+    <Content Include="Views\FundRaiser2016\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
