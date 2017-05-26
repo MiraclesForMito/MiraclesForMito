@@ -157,6 +157,7 @@
     <Compile Include="Controllers\BlogPostController.cs" />
     <Compile Include="Controllers\FundRaiser2016Controller.cs" />
     <Compile Include="Controllers\FundRaiser2015Controller.cs" />
+    <Compile Include="Controllers\MitoWalk2017Controller.cs" />
     <Compile Include="Controllers\MitoWalk2016Controller.cs" />
     <Compile Include="Controllers\MitoWalk2015Controller.cs" />
     <Compile Include="Controllers\NotifiedListItemController.cs" />
@@ -586,6 +587,7 @@
     <Content Include="Views\FundRaiser2015\Index.cshtml" />
     <Content Include="Views\MitoWalk2016\Index.cshtml" />
     <Content Include="Views\FundRaiser2016\Index.cshtml" />
+    <Content Include="Views\MitoWalk2017\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
